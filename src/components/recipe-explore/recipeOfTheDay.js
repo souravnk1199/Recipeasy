@@ -4,7 +4,6 @@ import {
   Grid,
   Paper,
   Button,
-  Container,
   Stack,
   Rating,
   Box,
@@ -16,16 +15,16 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const StyledImg = styled("img")({
-  width: "100%",
-  height: "100%",
+  width: "80%",
+  height: "auto",
   borderRadius: "8px",
   objectFit: "cover",
 });
 
-const RecipeTemplate = () => {
+const RecipeOfTheDay = () => {
   return (
-    <Container maxWidth="lg">
-      <Typography variant="h4" sx={{ marginBottom: 2, fontWeight: "bold" }}>
+    <Box>
+      <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: "bold" }}>
         Breakfast Recipe
       </Typography>
       <Typography variant="body1" gutterBottom>
@@ -34,7 +33,15 @@ const RecipeTemplate = () => {
         something sweet or you lean more towards something savory, there's sure
         to be something for everyone
       </Typography>
-      <Paper sx={{ marginTop: 3, padding: 2 }} elevation={3}>
+      <Paper
+        sx={{
+          marginTop: 3,
+          paddingX: 10,
+          paddingY: 3,
+          backgroundColor: "rgba(128, 128, 128, 0.1)",
+        }}
+        elevation={3}
+      >
         <Typography
           variant="h6"
           sx={{ marginBottom: 1, color: "red", fontWeight: "bold" }}
@@ -44,7 +51,7 @@ const RecipeTemplate = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={5}>
             <StyledImg
-              src={require("./assets/cheddar_sandwich.jpg")}
+              src={require("../assets/cheddar_sandwich.jpg")}
               alt="Breakfast Sandwich"
             />
           </Grid>
@@ -55,7 +62,6 @@ const RecipeTemplate = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                gap:2,
               }}
             >
               <Typography variant="h5">
@@ -111,8 +117,8 @@ const RecipeTemplate = () => {
           </Grid>
         </Grid>
       </Paper>
-    </Container>
+    </Box>
   );
 };
 
-export default RecipeTemplate;
+export default RecipeOfTheDay;
