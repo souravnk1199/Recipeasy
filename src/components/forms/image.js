@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Paper, IconButton, Button, Box } from '@mui/material';
-import { Close as CloseIcon, Add as AddIcon, Add } from '@mui/icons-material';
+import { Paper, IconButton, Box } from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 

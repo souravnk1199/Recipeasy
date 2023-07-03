@@ -30,7 +30,7 @@ import {
   initialValues,
 } from "./formUtils";
 
-const CreateRecipeNew = () => {
+const CreateRecipe = () => {
   return (
     <Formik
       initialValues={initialValues}
@@ -430,4 +430,4 @@ const CreateRecipeNew = () => {
   );
 };
 
-export default CreateRecipeNew;
+export default CreateRecipe;

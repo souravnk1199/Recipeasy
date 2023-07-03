@@ -7,8 +7,7 @@ import Header from "./components/home/header";
 import Footer from "./components/footer/footer";
 import Home from "./components/home/mainHome";
 import Explore from "./components/recipe-explore/mainExplore";
-import CreateRecipe from "./components/form/createRecipe";
-import CreateRecipeNew from "./components/formsnew/CreateRecipeNew";
+import CreateRecipeNew from "./components/forms/CreateRecipe";
 import RecipePage from "./components/recipe-details/recipepage";
 
 const CustomContainer = styled(Container)(({ theme }) => ({
@@ -34,8 +33,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/explore" element={<Explore />}></Route>
-            <Route path="/create" element={<CreateRecipe />}></Route>
-            <Route path="/createnew" element={<CreateRecipeNew />}></Route>
+            <Route path="/create" element={<CreateRecipeNew />}></Route>
             <Route path="/Recipe" element={<RecipePage />}></Route>
           </Routes>
         </CustomContainer>
