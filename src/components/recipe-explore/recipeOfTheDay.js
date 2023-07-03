@@ -15,7 +15,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const StyledImg = styled("img")({
-  width: "80%",
+  width: '80%',
   height: "auto",
   borderRadius: "8px",
   objectFit: "cover",
@@ -36,8 +36,10 @@ const RecipeOfTheDay = () => {
       <Paper
         sx={{
           marginTop: 3,
-          paddingX: 10,
-          paddingY: 3,
+          marginX:5,
+          paddingX: 5,
+          paddingBottom: 3,
+          paddingTop:1,
           backgroundColor: "rgba(128, 128, 128, 0.1)",
         }}
         elevation={3}
@@ -49,11 +51,23 @@ const RecipeOfTheDay = () => {
           Recipe of the Day!
         </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={5}>
-            <StyledImg
-              src={require("../assets/cheddar_sandwich.jpg")}
-              alt="Breakfast Sandwich"
-            />
+          <Grid
+            item
+            xs={12}
+            md={5}
+            
+          >
+            <Box sx={{
+              width:'100%',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+              <StyledImg
+                src={require("../assets/cheddar_sandwich.jpg")}
+                alt="Breakfast Sandwich"
+              />
+            </Box>
           </Grid>
           <Grid item xs={12} md={7} sx={{ textAlign: "left" }}>
             <Box

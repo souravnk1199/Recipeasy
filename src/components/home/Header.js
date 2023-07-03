@@ -1,15 +1,57 @@
-import React from "react";
-import { InputBase, Button, Box, Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { InputBase, Button, Box, Grid, Typography, Modal } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-
 import { Link } from "react-router-dom";
+import SignIn from "./signIn";
+import SignUp from "./signUp";
+
+const overlay = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: "rgba(0, 0, 0, 0.6)", 
+  zIndex: 1, 
+};
+
+const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  // width: 400,
+  bgcolor: "background.paper",
+  border: "1px solid #000",
+  borderRadius: "10px",
+  boxShadow: 24,
+  paddingX: 4,
+};
+
+const buttonStyle = {
+  textTransform: "capitalize",
+  borderRadius: "8px",
+  fontWeight: "bold",
+  color: "black",
+};
 
 const Header = () => {
-  const buttonStyle = {
-    textTransform: "capitalize",
-    borderRadius: "8px",
-    fontWeight: "bold",
-    color: "black",
+  const [openSignIn, setOpenSignIn] = useState(false);
+  const handleOpenSignIn = () => setOpenSignIn(true);
+  const handleCloseSignIn = () => setOpenSignIn(false);
+
+  const [openSignUp, setOpenSignUp] = useState(false);
+  const handleOpenSignUp = () => setOpenSignUp(true);
+  const handleCloseSignUp = () => setOpenSignUp(false);
+
+  const signInToSignUp = () => {
+    handleCloseSignIn();
+    handleOpenSignUp();
+  };
+
+  const signUpToSignIn = () => {
+    handleCloseSignUp();
+    handleOpenSignIn();
   };
 
   return (
@@ -19,6 +61,8 @@ const Header = () => {
         sx={{
           alignItems: "center",
           justifyContent: "center",
+          borderBottom: 3,
+          borderBottomColor: "rgba(128, 128, 128, 0.075)",
           marginBottom: 1.5,
         }}
       >
@@ -120,9 +164,9 @@ const Header = () => {
               component={Link}
               to="/explore"
             >
-              Recipe
+              Explore
             </Button>
-            <Button variant="text" sx={buttonStyle}>
+            <Button variant="text" sx={buttonStyle} component={Link} to="/create">
               Create
             </Button>
             <Button variant="text" sx={buttonStyle}>
@@ -144,6 +188,7 @@ const Header = () => {
           >
             <Button
               variant="text"
+              onClick={handleOpenSignIn}
               sx={{
                 textTransform: "capitalize",
                 borderRadius: "2rem",
@@ -152,10 +197,11 @@ const Header = () => {
                 "&:hover": { backgroundColor: "white" },
               }}
             >
-              Login
+              Sign In
             </Button>
             <Button
               variant="contained"
+              onClick={handleOpenSignUp}
               sx={{
                 textTransform: "capitalize",
                 borderRadius: "2rem",
@@ -169,6 +215,17 @@ const Header = () => {
           </Box>
         </Grid>
       </Grid>
+      <Modal open={openSignIn} onClose={handleCloseSignIn}>
+        <Box sx={modalStyle}>
+          <SignIn tosignup={signInToSignUp} close={handleCloseSignIn} />
+        </Box>
+      </Modal>
+      <Modal open={openSignUp} onClose={handleCloseSignUp}>
+        <Box sx={modalStyle}>
+          <SignUp tosignin={signUpToSignIn} close={handleCloseSignUp} />
+        </Box>
+      </Modal>
+      {(openSignIn || openSignUp) && <div style={overlay} />}
     </>
   );
 };

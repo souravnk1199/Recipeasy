@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 
 import RecipeOfTheDay from "./recipeOfTheDay";
-import Images from "./images";
+import RecipeBox from "./recipeBox";
 
 const Explore = () => {
   return (
@@ -10,7 +10,7 @@ const Explore = () => {
         <RecipeOfTheDay/>
       </Grid>
       <Grid item xs={12}>
-        <Images/>
+        <RecipeBox/>
       </Grid>
     </Grid>
   )

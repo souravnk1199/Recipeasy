@@ -14,6 +14,7 @@ const StyledImg = styled("img")({
   height: "100px",
   objectFit: "cover",
   borderRadius: "50%",
+  boxShadow:'3px 5px 10px gray',
 });
 
 const Slider = (props) => {

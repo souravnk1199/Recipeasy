@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import { styled } from "@mui/system";
 
 import ServeTimeCal from "./serveTimeCal";
@@ -8,18 +8,21 @@ const StyledImg = styled("img")({
   width: "150px",
   height: "100px",
   objectFit: "cover",
+  borderRadius: '5px',
 });
 
 const TrendingRecipe = ({ recipe }) => {
   return (
-    <Box
+    <Paper
       sx={{
+        margin:1,
         padding: 1,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
         gap: 0.5,
+        backgroundColor:'rgba(128, 128, 128, 0.1)',
       }}
     >
       <Box
@@ -35,9 +38,9 @@ const TrendingRecipe = ({ recipe }) => {
         cal={recipe.calorie}
       />
       <Typography
-        variant="body2"
+        variant="caption"
         sx={{
-          paddingBottom: 1.5,
+          // paddingBottom: 1.5,
           paddingX: 1,
           paddingTop: 0.5,
           textAlign: "center",
@@ -45,7 +48,7 @@ const TrendingRecipe = ({ recipe }) => {
       >
         {recipe.description}
       </Typography>
-    </Box>
+    </Paper>
   );
 };
 

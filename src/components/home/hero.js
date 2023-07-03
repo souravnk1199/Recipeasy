@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-import { Box, Typography, Grid, Button, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  IconButton,
+  Paper,
+} from "@mui/material";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { styled } from "@mui/system";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -142,32 +148,40 @@ const Hero = () => {
       <Grid item xs={12} md={6} sx={{ display: "flex" }}>
         <Box
           sx={{
-            padding: 2,
+            paddingX: 2,
+            paddingTop: 0.5,
+            paddingBottom: 2,
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-around",
+            justifyContent: "space-between",
+            alignItems: "center",
             position: "relative",
             backgroundColor: "rgba(128, 128, 128, 0.075)",
           }}
         >
-          <Typography
-            variant="h6"
-            component="h6"
-            sx={{
-              backgroundColor: "white",
-              width: "fit-content",
-              paddingY: 0.5,
-              paddingX: 1.5,
-              borderRadius: "10px",
-            }}
-          >
-            Healthy Recipe
-          </Typography>
+          <Paper>
+            <Typography
+              variant="h6"
+              component="h6"
+              sx={{
+                backgroundColor: "white",
+                width: "fit-content",
+                paddingY: 0.5,
+                paddingX: 1.5,
+                borderRadius: "10px",
+                // marginTop:0.5,
+                textAlign: "center",
+              }}
+            >
+              Healthy Recipe
+            </Typography>
+          </Paper>
+
           <Typography variant="h5" sx={{ fontWeight: "bold" }}>
             Delicious Sprouts Salad
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" textAlign={"center"}>
             Sprout Salad is a healthy, gluten-free, and vegan salad made with
             green moong bean sprouts and colourful vegetables.
           </Typography>
@@ -179,18 +193,6 @@ const Hero = () => {
               <Typography variant="body1">1st June</Typography>
             </Box>
           </Box>
-          <Button
-            variant="contained"
-            sx={{
-              position: "absolute",
-              bottom: 5,
-              right: 5,
-              backgroundColor: "orange",
-              "&:hover": { backgroundColor: "darkorange" },
-            }}
-          >
-            View
-          </Button>
         </Box>
         <Box sx={{ flex: 1 }}>
           <StyledImg
@@ -217,20 +219,21 @@ const Hero = () => {
               justifyContent: "center",
             }}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                backgroundColor: "white",
-                width: "fit-content",
-                marginTop: 0.5,
-                paddingY: 0.5,
-                paddingX: 1.5,
-                borderRadius: "10px",
-                fontWeight: "bold",
-              }}
-            >
-              Trending Recipes
-            </Typography>
+            <Paper sx={{ marginTop: 0.5 }}>
+              <Typography
+                variant="h6"
+                sx={{
+                  backgroundColor: "white",
+                  width: "fit-content",
+                  paddingY: 0.5,
+                  paddingX: 1.5,
+                  borderRadius: "10px",
+                  fontWeight: "bold",
+                }}
+              >
+                Trending Recipes
+              </Typography>
+            </Paper>
           </Box>
           <Box
             sx={{
