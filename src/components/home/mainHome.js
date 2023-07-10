@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 
 import Hero from "./hero";
-import Corousel from "./corousel";
+import Carousel from "./carousel";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
         <Hero />
       </Grid>
       <Grid item xs={12}>
-        <Corousel />
+        <Carousel />
       </Grid>
     </Grid>
   );

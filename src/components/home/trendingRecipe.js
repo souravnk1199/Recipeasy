@@ -8,21 +8,21 @@ const StyledImg = styled("img")({
   width: "150px",
   height: "100px",
   objectFit: "cover",
-  borderRadius: '5px',
+  borderRadius: "5px",
 });
 
 const TrendingRecipe = ({ recipe }) => {
   return (
     <Paper
       sx={{
-        margin:1,
+        margin: 1,
         padding: 1,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
         gap: 0.5,
-        backgroundColor:'rgba(128, 128, 128, 0.1)',
+        backgroundColor: "rgba(128, 128, 128, 0.1)",
       }}
     >
       <Box

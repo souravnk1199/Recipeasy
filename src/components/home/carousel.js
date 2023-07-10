@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import { Box, Paper, Typography } from "@mui/material";
@@ -6,6 +6,9 @@ import { styled } from "@mui/system";
 
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import IconButton from "@mui/material/IconButton";
 
 import Slider from "./slider";
 
@@ -14,11 +17,10 @@ const StyledImg = styled("img")({
   height: "100px",
   objectFit: "cover",
   borderRadius: "50%",
-  boxShadow:'3px 5px 10px gray',
+  boxShadow: "3px 5px 10px gray",
 });
 
-
-const Corousel = () => {
+const Carousel = () => {
   const categories = [
     {
       link: "https://img.freepik.com/premium-photo/idly-idli-south-indian-main-breakfast-item-which-is-beautifully-arranged-black-plate_527904-2906.jpg",
@@ -139,7 +141,36 @@ const Corousel = () => {
       link: "https://www.cookwithnabeela.com/wp-content/uploads/2023/02/CheeseBalls.webp",
       title: "Cheese Balls",
     },
+    {
+      link: "https://lifemadesweeter.com/strawberry-smoothie/easy-strawberry-smoothie-recipe-vegan-whole30-paleo-keto/",
+      title: "Strawberry Smoothie",
+    },
+    {
+      link: "https://pbs.twimg.com/media/ERKYdzIXkAYMyW3.png",
+      title: "Breakfast",
+    },
+    {
+      link: "https://afoodloverskitchen.com/wp-content/uploads/oreo-cookie-ice-cream-f1.jpg",
+      title: "Oreo Icecream",
+    },
   ];
+
+  const [startIndex, setStartIndex] = useState(0);
+  const itemsPerPage = 5;
+
+  const goToPreviousPage = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (startIndex + itemsPerPage < seasonal.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
+
+  const displayedItems = seasonal.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <>
@@ -153,14 +184,21 @@ const Corousel = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={3} sx={{display:{ xs: "none", md: "flex", width:'100%' }}}>
+        <Grid
+          item
+          xs={3}
+          sx={{
+            display: { xs: "none", md: "flex", width: "100%" },
+          }}
+          style={{ height: '90vh' }}
+        >
           <Paper
             sx={{
-              display:{ xs: "none", md: "flex" },
+              display: { xs: "none", md: "flex" },
               marginY: 2,
               backgroundColor: "rgba(128, 128, 128, 0.075)",
-              padding:2,
-              width:'100%'
+              padding: 2,
+              width: "100%",
             }}
           >
             <Box
@@ -169,43 +207,61 @@ const Corousel = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                width:'100%'
+                width: "100%",
               }}
             >
-              <Typography variant="h5" marginBottom={3}>
+              <Typography variant="h5" marginBottom={1}>
                 Seasonal Recipes
               </Typography>
+              <IconButton
+                onClick={goToPreviousPage}
+                sx={{ color: "black", 
+                '& .MuiSvgIcon-root': {
+                  fontSize: '2rem',
+                }, }}
+                disabled={startIndex === 0}
+              >
+                <KeyboardArrowUpIcon />
+              </IconButton>
+
               <ImageList
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  height: '544px',
-                  overflow: "auto",
-                  "&::-webkit-scrollbar": {
-                    width: "5px",
-                  },
-                  "&::-webkit-scrollbar-thumb": {
-                    backgroundColor:'transparent',
-                    borderRadius: "3px",
-                    transition: "background-color 0.3s",
-                  },
-                  "&:hover::-webkit-scrollbar-thumb": {
-                    backgroundColor: "grey",
-                  },
+                  overflow: "hidden",
+                  height: '62rem',
+                  padding:'5px'
                 }}
+                
                 gap={30}
                 cols={1}
               >
-                {seasonal.map((item) => (
+                {displayedItems.map((item) => (
                   <ImageListItem
                     key={item.link}
-                    sx={{ alignItems: "center", justifyContent: "center", gap:1, paddingX:2, }}
+                    sx={{
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 1,
+                      paddingX: 2,
+                    }}
                   >
                     <StyledImg src={item.link} alt={item.title} />
                     <Typography variant="body2">{item.title}</Typography>
                   </ImageListItem>
                 ))}
               </ImageList>
+
+              <IconButton
+                onClick={goToNextPage}
+                disabled={startIndex + itemsPerPage >= seasonal.length}
+                sx={{ color: "black", 
+                '& .MuiSvgIcon-root': {
+                  fontSize: '2rem',
+                }, }}
+              >
+                <KeyboardArrowDownIcon />
+              </IconButton>
             </Box>
           </Paper>
         </Grid>
@@ -214,4 +270,4 @@ const Corousel = () => {
   );
 };
 
-export default Corousel;
+export default Carousel;

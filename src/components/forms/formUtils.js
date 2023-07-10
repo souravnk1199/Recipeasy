@@ -44,6 +44,7 @@ export const initialValues = {
   cuisine: "",
   category: "",
   calories: "",
+  serving: "",
   radio: "vegetarian",
   slider: 0,
   additionalinfo: "",
@@ -67,15 +68,18 @@ export const initialValues = {
       unit: "",
     },
   ],
+  // images: [""],
+  file: null,
 };
-export const categories = ["Snacks", "Vegan", "Breakfast", "Dessert", "Snacks"];
-
+export const categories = ["Vegan", "Breakfast", "Dessert", "Snacks"];
+const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 export const validationSchema = Yup.object().shape({
   recipename: Yup.string().required("RecipeName is required"),
   cookingtime: Yup.number().required("Cooking Time is required"),
   cuisine: Yup.string().required("Cuisine is required"),
   category: Yup.string().required("Category is required"),
   calories: Yup.number().required("Calories is required"),
+  serving: Yup.number().required("Serving is required"),
   briefdescription: Yup.string().required("Brief Description is required"),
   radio: Yup.string().required("Radio option is required"),
   step: Yup.array().of(Yup.string().required("Steps required")),
@@ -86,6 +90,17 @@ export const validationSchema = Yup.object().shape({
       unit: Yup.string().required("Unit is required"),
     })
   ),
+  file: Yup.mixed()
+    .nullable()
+    .required()
+    .test("FILE_SIZE", "Uploaded file size is too big", (value) => {
+      if (!value) return true;
+      return value.size <= 1024 * 1024;
+    })
+    .test("FILE_FORMAT", "Uploaded file has unsupported format", (value) => {
+      if (!value) return true;
+      return SUPPORTED_FORMATS.includes(value?.type);
+    }),
 });
 
 export const handleSubmit = (values) => {

@@ -7,7 +7,7 @@ import Header from "./components/home/header";
 import Footer from "./components/footer/footer";
 import Home from "./components/home/mainHome";
 import Explore from "./components/recipe-explore/mainExplore";
-import CreateRecipeNew from "./components/forms/CreateRecipe";
+import CreateNewRecipe from "./components/forms/createRecipe";
 import RecipePage from "./components/recipe-details/recipepage";
 
 const CustomContainer = styled(Container)(({ theme }) => ({
@@ -27,13 +27,13 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const App = () => {
   return (
     <BrowserRouter>
-      <MainContainer>
+      <MainContainer> 
         <Header />
         <CustomContainer maxWidth={"xl"}>
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/explore" element={<Explore />}></Route>
-            <Route path="/create" element={<CreateRecipeNew />}></Route>
+            <Route path="/create" element={<CreateNewRecipe />}></Route>
             <Route path="/Recipe" element={<RecipePage />}></Route>
           </Routes>
         </CustomContainer>
